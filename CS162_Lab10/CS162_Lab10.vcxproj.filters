@@ -15,13 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="fibonacci_iter.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CS199_Lab10_notes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="makefile" />
+    <None Include="README" />
   </ItemGroup>
 </Project>

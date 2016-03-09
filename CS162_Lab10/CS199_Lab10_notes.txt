@@ -1,0 +1,43 @@
+You are on the right track. The number of function calls had to be fairly high before the difference was substantial. 
+
+O2 flag includes -foptimize-sibling-calls btw. 
+
+ 
+
+Without Optimization:
+
+Welcome to Lab10, our final Lab!
+
+
+How many tests would you like to run?
+10000000
+Skip Double Recursion Call for Testing Large Values? 1 to skip, else 0
+1
+Running Fibonacci using Iteration
+Total Time: 0.516329000 seconds
+
+Running Factorial using Not Tail Recursion
+Total Time: 1.072195000 seconds
+
+Running Factorial using Tail Recursion
+Total Time: 0.784460000 seconds
+
+ 
+
+Optimized:
+
+Welcome to Lab10, our final Lab!
+
+
+How many tests would you like to run?
+10000000
+Skip Double Recursion Call for Testing Large Values? 1 to skip, else 0
+1
+Running Fibonacci using Iteration
+Total Time: 0.198493000 seconds
+
+Running Factorial using Not Tail Recursion
+Total Time: 0.172085000 seconds
+
+Running Factorial using Tail Recursion
+Total Time: 0.267853000 seconds
