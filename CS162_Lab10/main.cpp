@@ -23,7 +23,6 @@ int getInput();
 long FibonacciIter(int n);
 long FibonacciRecur(int n);
 string addCommas(long n);
-//string addCommas(double n);
 
 //test
 int fibFunction(int num);
@@ -35,13 +34,13 @@ int main() {
 	clock_t t;
 	long fib;
 
+	cout << "This program will compare the amount of time it takes" << endl;
+	cout << "to find the N'th Fibonacci number, using iterative and " << endl;
+	cout << "recursive algorithms. You will enter N." << endl;
+	cout << endl;
+
 	while (done != true)
 	{
-		cout << "This program will compare the amount of time it takes" << endl;
-		cout << "to find the N'th Fibonacci number, where you will enter N," << endl;
-		cout << "using iterative and recursive algorithms." << endl;
-		cout << endl;
-
 		displayMenu();
 		menuChoice = getInput();
 		switch (menuChoice) {
@@ -66,7 +65,6 @@ int main() {
 			t = clock();
 			fib = FibonacciIter(n);
 			t = clock() - t;
-			//cout << "Value returned from FibonacciIter(): " << fib;
 			cout << "Value returned from FibonacciIter(): " << addCommas(fib);
 			cout << endl;
 			cout << "It took " << addCommas(t) << " clicks (" << ((float)t) / CLOCKS_PER_SEC << " seconds)." << endl;
@@ -77,9 +75,7 @@ int main() {
 			cout << "Calling Recursive Fibonacci implementation" << endl;
 			t = clock();
 			fib = FibonacciRecur(n);
-			//fibFunction(n);
 			cout << endl;
-			//fibFunction(n);
 			t = clock() - t;
 			cout << "Value returned from FibonacciRecur:" << addCommas(fib);
 			cout << endl;
@@ -102,7 +98,7 @@ void displayMenu()		//displays user options
 {
 	cout << endl;
 	cout << "Choose option and press enter" << endl;
-	cout << "*************************" << endl;
+	cout << "*****************************" << endl;
 	cout << "  1) Run the Fibonacci comparision" << endl;
 	cout << "  2) Exit" << endl;
 	cout << endl;
@@ -115,7 +111,7 @@ int getInput() {	//to collect user responses to menu
 	return choice;
 }
 
-//used with permission from
+//from
 //http://www.codeproject.com/Tips/109443/Fibonacci-Recursive-and-Non-Recursive-C
 long FibonacciIter(int num)
 {
@@ -127,11 +123,6 @@ long FibonacciIter(int num)
 		long temp = second;
 		second = first + second;
 		first = temp;
-
-		//cout << "Values at end of counter loop #: " << counter << endl;
-		//cout << "first: " << first << endl;
-		//cout << "second: " << second << endl;
-		//cout << "temp: " << temp << endl;
 		++counter;
 	}
 	if (num == 0)
@@ -140,7 +131,7 @@ long FibonacciIter(int num)
 		return first + second;
 }
 
-//modified and used with permission from
+//modified and from
 //http://code.runnable.com/UqfN-4zVBhVwAAH9/solving-the-fibonacci-number-sequence-using-recursion-in-c%2B%2B-for-recursive
 long FibonacciRecur(int n) {
 	if (n == 0)
@@ -186,28 +177,4 @@ string addCommas(long n)
 		commaPlace -= 3;
 	}
 	return output;
-}
-
-//test
-int fibFunction(int num)
-{
-	cout << "Finding the fib of " << num << endl;
-
-	//The rules of Fibonacii states that F0 = 0 and F1 = 1.
-	//These are our termination cases.
-	if (num == 0)
-	{
-		cout << "We have reached the termination case of 0. Returning 0" << endl;
-		return 0;
-	}
-
-	if (num == 1)
-	{
-		cout << "We have reached the termination case of 1. Returning 1" << endl;
-		return 1;
-	}
-
-	int result = fibFunction(num - 1) + fibFunction(num - 2);
-	cout << "Fib of " << num << " is " << result << endl;
-	return result;
 }
