@@ -8,7 +8,7 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <time.h>       /* clock_t, clock, CLOCKS_PER_SEC */
+#include <time.h>
 #include <string>
 #include <sstream>
 #include <iomanip>
@@ -17,39 +17,52 @@ using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
-//using std::to_string;
 using std::ostringstream;
 using std::setprecision;
 
+
+//function prototypes
+//displays user options to console
 void displayMenu();
+
+//gets user input
 int getInput();
 
+//fibonacci iteration algorithm from
+//http://www.codeproject.com/Tips/109443/Fibonacci-Recursive-and-Non-Recursive-C
 long FibonacciIter(int n);
+
+//fibonacci recursive algorithm modified and from
+//http://code.runnable.com/UqfN-4zVBhVwAAH9/solving-the-fibonacci-number-sequence-using-recursion-in-c%2B%2B-for-recursive
 long FibonacciRecur(int n);
+
+//from Professor Rooker
+//Not Tail Recursive factorial function
 long rfactorial(int n);
+
+//from Professor Rooker
+//Tail Recursive factorial function & helper function
 long factorialHelper(int n, long result);
 long factorial(int n);
+
+//creates and returns a string with commas for displaying large numbers 
 string addCommas(long n);
 
 int main() {
-	bool done = false;
-	int menuChoice = 0;
-	int n = -1;
-	clock_t t1;
-	clock_t t2;
-	clock_t t3;
-	clock_t t4;
-	long fib;
-	long fact;
-
-
+	bool done = false;	//for menu
+	int menuChoice = 0;	//for menu/user inputs
+	int n = -1;			//user selectable # for fibonacci # and factorial tests
+	clock_t t1;			//used to capture time at start of test
+	clock_t t2;			//used to capture time as end of test
+	long fib;			//used for fibonacci result
+	long fact;			//used for factorial result
 
 	while (done != true)
 	{
 		displayMenu();
 		menuChoice = getInput();
 		switch (menuChoice) {
-		case 1:
+		case 1:		//fibonacci tests
 			cout << "This program will compare the amount of time it takes" << endl;
 			cout << "to find the N'th Fibonacci number, using iterative and " << endl;
 			cout << "recursive algorithms. You will enter N." << endl;
@@ -57,7 +70,7 @@ int main() {
 			while (n < 0)
 			{
 				cout << "Enter a positive integer 'N' LESS THAN 46!" << endl;
-				cout << "(N of over 45 will exceed this programs limits," << endl;
+				cout << "(N of over 45 will exceed programs limits," << endl;
 				cout << " and N of 19 or more will take over a minute to complete...)" << endl;
 				cout << "Your entry: ";
 				cin.ignore();
@@ -69,7 +82,7 @@ int main() {
 					cout << endl;
 				}
 			}
-			//Iterative test
+			//fibonacci iteration
 			cout << "Finding " << addCommas(n) << "'th " << "fibonacci number...." << endl;
 			cout << "Calling Iterative Fibonacci implementation" << endl;
 			t1 = clock();
@@ -84,7 +97,7 @@ int main() {
 			cout << "It took " << addCommas(t1) << " clicks (" << setprecision(9) << ((float)t1) / CLOCKS_PER_SEC << " seconds)." << endl;
 			cout << endl;
 
-			//Recursive test
+			//fibonacci recursive
 			cout << "Finding " << addCommas(n) << "'th " << "fibonacci number...." << endl;			
 			cout << "Calling Recursive Fibonacci implementation" << endl;
 			t2 = clock();
@@ -101,10 +114,7 @@ int main() {
 			n = -1;		//reset n
 			break;
 
-
-			
-
-		case 2:
+		case 2:		//factorial tests
 			cout << "This program will compare the amount of time it takes" << endl;
 			cout << "to find the factorial of N, using recursive and " << endl;
 			cout << "tail recursive algorithms. You will enter N." << endl;
@@ -112,7 +122,7 @@ int main() {
 			while (n < 0)
 			{
 				cout << "Enter a positive integer 'N' LESS THAN 17!" << endl;
-				cout << "(over 16 will exceed this programs limits in a Windows 10 64 bit system" << endl;
+				cout << "(over 16 will exceed program limits in a Windows 10 64 bit system" << endl;
 				cout << "and N of 16 will require over 15 seconds to complete." << endl;
 				cout << "Your entry: ";
 				cin.ignore();
@@ -141,7 +151,7 @@ int main() {
 
 			//tail recursive factorial test
 			cout << "Finding factorial of " << addCommas(n) << endl;
-			cout << "Calling non tail recursive factorial method" << endl;
+			cout << "Calling tail recursive factorial method" << endl;
 			t2 = clock();
 			for (int i = 0; i < 100000000; i++)
 			{
@@ -166,7 +176,8 @@ int main() {
 	return 0;
 }
 
-void displayMenu()		//displays user options
+//displays user options to console
+void displayMenu()
 {
 	cout << endl;
 	cout << "Choose option and press enter" << endl;
@@ -184,8 +195,7 @@ int getInput() {	//to collect user responses to menu
 	return choice;
 }
 
-//Iteration algorithm
-//from
+//fibonacci iteration algorithm from
 //http://www.codeproject.com/Tips/109443/Fibonacci-Recursive-and-Non-Recursive-C
 long FibonacciIter(int num)
 {
@@ -205,8 +215,7 @@ long FibonacciIter(int num)
 		return first + second;
 }
 
-//Recursive algorithm
-//modified and from
+//fibonacci recursive algorithm modified and from
 //http://code.runnable.com/UqfN-4zVBhVwAAH9/solving-the-fibonacci-number-sequence-using-recursion-in-c%2B%2B-for-recursive
 long FibonacciRecur(int n) {
 	if (n == 0)
@@ -219,7 +228,7 @@ long FibonacciRecur(int n) {
 
 
 //from Professor Rooker
-//Not Tail Recursive
+//Not Tail Recursive factorial function
 long rfactorial(int n)
 {
 	if (n == 1)
@@ -229,8 +238,7 @@ long rfactorial(int n)
 }
 
 //from Professor Rooker
-//Tail Recursive
-
+//Tail Recursive factorial function & helper function
 long factorialHelper(int n, long result)
 {
 	if (n == 1)
@@ -245,9 +253,7 @@ long factorial(int n)
 }
 
 
-
-
-//original addCommas, didn't compile on FLIP
+//original addCommas function, didn't compile on FLIP
 //string addCommas(long n)
 //{
 //	string output = to_string(n);
@@ -260,12 +266,12 @@ long factorial(int n)
 //	return output;
 //}
 
+//creates and returns a string with commas for displaying large numbers 
 string addCommas(long n)
 {
 	ostringstream ss;
 	ss << n;
 	string output = ss.str();
-
 	int commaPlace = output.length() - 3;
 	while (commaPlace > 0)
 	{

@@ -1,5 +1,5 @@
 all:
-	g++ -O2 main.cpp -o prog
+	g++ -O3 main.cpp -o prog
 	
 
 clean:
